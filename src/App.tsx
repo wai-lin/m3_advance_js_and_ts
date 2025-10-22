@@ -14,6 +14,7 @@ export const App: Component = () => {
 				{" "}
 				{count()}
 			</button>
+			<TextEditor />
 		</div>
 	);
 };
