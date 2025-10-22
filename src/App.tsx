@@ -1,20 +1,14 @@
 import type { Component } from "solid-js";
+import { QueryClientProvider } from "@tanstack/solid-query";
+import { Index } from "./routes/index";
+import { queryClient } from "./utils/tanstackQuery";
 
 export const App: Component = () => {
-	const [count, setCount] = createSignal(0);
-
 	return (
-		<div>
-			<h1>Hello</h1>
-			<button
-				onClick={() => setCount(c => c + 1)}
-				class="btn"
-			>
-				Count:
-				{" "}
-				{count()}
-			</button>
-			<TextEditor />
-		</div>
+		<QueryClientProvider client={queryClient}>
+			<Router>
+				<Route path="/" component={() => <Index />} />
+			</Router>
+		</QueryClientProvider>
 	);
 };

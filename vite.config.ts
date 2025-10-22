@@ -10,9 +10,9 @@ export default defineConfig({
 		tailwindcss(),
 		nitro(),
 		AutoImport({
-			imports: ["solid-js"],
 			dts: "./src/auto-imports.d.ts",
 			dirs: ["src/composables", "src/components", "src/utils"],
+			imports: ["solid-js", "@solidjs/router"],
 		}),
 	],
 });

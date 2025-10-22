@@ -9,7 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@orpc/client": "^1.10.0",
+    "@orpc/server": "^1.10.0",
+    "@orpc/tanstack-query": "^1.10.0",
+    "@solidjs/router": "^0.15.3",
     "@tailwindcss/vite": "^4.1.15",
+    "@tanstack/solid-query": "^5.90.6",
     "@tiptap/core": "^3.7.2",
     "@tiptap/extensions": "^3.7.2",
     "@tiptap/pm": "^3.7.2",
@@ -18,7 +23,8 @@
     "daisyui": "^5.3.7",
     "solid-js": "^1.9.9",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.15"
+    "tailwindcss": "^4.1.15",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.0.0",

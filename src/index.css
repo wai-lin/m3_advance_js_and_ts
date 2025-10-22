@@ -30,7 +30,7 @@
          @apply text-sm;
       }
       ul, ol {
-         @apply pl-4;
+         @apply pl-6;
       }
       ul {
          @apply list-disc;
