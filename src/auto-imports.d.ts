@@ -16,11 +16,14 @@ declare global {
   const Suspense: typeof import('solid-js').Suspense
   const SuspenseList: typeof import('solid-js').SuspenseList
   const Switch: typeof import('solid-js').Switch
+  const TextEditor: typeof import('./components/TextEditor/index').TextEditor
   const batch: typeof import('solid-js').batch
   const children: typeof import('solid-js').children
+  const cn: typeof import('./utils/cn').cn
   const createContext: typeof import('solid-js').createContext
   const createDeferred: typeof import('solid-js').createDeferred
   const createEffect: typeof import('solid-js').createEffect
+  const createId: typeof import('./utils/createId').createId
   const createMemo: typeof import('solid-js').createMemo
   const createMutable: typeof import('solid-js/store').createMutable
   const createRenderEffect: typeof import('solid-js').createRenderEffect
