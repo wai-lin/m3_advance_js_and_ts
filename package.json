@@ -1,0 +1,7 @@
+{
+  "name": "editor",
+  "description": "",
+  "author": "wai-lin",
+  "license": "MIT",
+  "packageManager": "pnpm@10.19.0"
+}

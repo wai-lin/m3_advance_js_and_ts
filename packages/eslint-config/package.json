@@ -1,0 +1,13 @@
+{
+  "name": "@editor/eslint-config",
+  "version": "1.0.0",
+  "description": "Common ESLint configuration for the project.",
+  "main": "eslint-config.mjs",
+  "author": "wai-lin",
+  "license": "MIT",
+  "packageManager": "pnpm@10.19.0",
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.1.0",
+    "eslint": "^9.38.0"
+  }
+}
