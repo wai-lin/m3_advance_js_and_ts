@@ -3,6 +3,12 @@
       { "code_action": "source.organizeImports" },
       { "code_action": "source.fixAll.eslint" }
    ],
+   "languages": {
+      "Prisma": {
+         "formatter": "language_server",
+         "format_on_save": "on"
+      }
+   },
    "lsp": {
       "tailwindcss-language-server": {
          "settings": {
