@@ -15,4 +15,17 @@ declare global {
 	> = {
 		[K in Key]: InferZod<Type[K]>;
 	};
+
+	interface WithPagination<Data> {
+		data: Data;
+		meta: {
+			limit: number;
+			offset: number;
+			currentPage: number;
+			totalPages: number;
+			totalCount: number;
+			hasNextPage: boolean;
+			hasPrevPage: boolean;
+		};
+	}
 }

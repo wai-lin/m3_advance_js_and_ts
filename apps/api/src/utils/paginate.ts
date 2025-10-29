@@ -10,7 +10,7 @@
 export function paginate<
 	Query extends { limit: number; offset: number },
 	Data extends unknown[],
->(query: Query, count: number, data: Data) {
+>(query: Query, count: number, data: Data): WithPagination<Data> {
 	const limit = query.limit;
 	const offset = query.offset;
 	const currentPage = Math.floor(query.offset / query.limit) + 1;

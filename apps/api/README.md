@@ -2,47 +2,6 @@
 
 A Hono-based API server with Prisma ORM and SQLite database.
 
-## Prerequisites
-
-- Node.js (v22 or higher)
-- pnpm (package manager)
-
-## Setup Instructions
-
-### 1. Install Dependencies
-
-```bash
-pnpm install
-```
-
-This will automatically run `db:generate` to generate the Prisma client.
-
-### 2. Configure Environment Variables
-
-Create a `.env` file in the root of the `apps/api` directory:
-
-```bash
-DATABASE_URL="file:./local.db"
-```
-
-### 3. Setup Database
-
-Push the Prisma schema to the database:
-
-```bash
-pnpm run db:push
-```
-
-This will create the SQLite database and apply the schema.
-
-## Development
-
-Start the development server with hot reload:
-
-```bash
-pnpm run dev
-```
-
 The server will start at `http://localhost:3000`
 
 ## Available Scripts

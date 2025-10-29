@@ -1,35 +1,38 @@
 {
-	"name": "@editor/api",
-	"type": "module",
-	"scripts": {
-		"postinstall": "pnpm run db:generate",
-		"dev": "tsx watch src/index.ts",
-		"build": "tsc",
-		"start": "node dist/index.js",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
-		"db:push": "dotenv -e .env -- prisma db push",
-		"db:generate": "dotenv -e .env -- prisma generate",
-		"db:studio": "dotenv -e .env -- prisma studio"
-	},
-	"imports": {
-		"#utils/*": "./src/utils/*.ts"
-	},
-	"dependencies": {
-		"@hono/node-server": "^1.19.5",
-		"@hono/zod-validator": "^0.7.4",
-		"@prisma/client": "^6.18.0",
-		"hono": "^4.10.3",
-		"zod": "^4.1.12"
-	},
-	"devDependencies": {
-		"@antfu/eslint-config": "^6.1.0",
-		"@editor/eslint-config": "workspace:*",
-		"@types/node": "^20.11.17",
-		"dotenv-cli": "^11.0.0",
-		"eslint": "^9.38.0",
-		"prisma": "^6.18.0",
-		"tsx": "^4.7.1",
-		"typescript": "^5.8.3"
-	}
+   "name": "@editor/api",
+   "type": "module",
+   "imports": {
+      "#utils/*": "./src/utils/*.ts"
+   },
+   "exports": {
+      "./types": "./src/types.ts"
+   },
+   "scripts": {
+      "postinstall": "pnpm run db:generate",
+      "dev": "tsx watch src/index.ts",
+      "build": "tsc",
+      "start": "node dist/index.js",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix",
+      "db:push": "dotenv -e .env -- prisma db push",
+      "db:generate": "dotenv -e .env -- prisma generate",
+      "db:studio": "dotenv -e .env -- prisma studio"
+   },
+   "dependencies": {
+      "@hono/node-server": "^1.19.5",
+      "@hono/zod-validator": "^0.7.4",
+      "@prisma/client": "^6.18.0",
+      "hono": "^4.10.3",
+      "zod": "^4.1.12"
+   },
+   "devDependencies": {
+      "@antfu/eslint-config": "^6.1.0",
+      "@editor/eslint-config": "workspace:*",
+      "@types/node": "^20.11.17",
+      "dotenv-cli": "^11.0.0",
+      "eslint": "^9.38.0",
+      "prisma": "^6.18.0",
+      "tsx": "^4.7.1",
+      "typescript": "^5.8.3"
+   }
 }

@@ -53,6 +53,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@editor/api':
+        specifier: workspace:*
+        version: link:../api
       '@solidjs/router':
         specifier: ^0.15.3
         version: 0.15.3(solid-js@1.9.10)
@@ -71,6 +74,9 @@ importers:
       daisyui:
         specifier: ^5.3.10
         version: 5.3.10
+      ofetch:
+        specifier: ^1.5.0
+        version: 1.5.0
       solid-js:
         specifier: ^1.9.9
         version: 1.9.10
@@ -2121,6 +2127,9 @@ packages:
 
   object-deep-merge@2.0.0:
     resolution: {integrity: sha512-3DC3UMpeffLTHiuXSy/UG4NOIYTLlY9u3V82+djSCLYClWobZiS4ivYzpIUWrRY/nfsJ8cWsKyG3QfyLePmhvg==}
+
+  ofetch@1.5.0:
+    resolution: {integrity: sha512-A7llJ7eZyziA5xq9//3ZurA8OhFqtS99K5/V1sLBJ5j137CM/OAjlbA/TEJXBuOWwOfLqih+oH5U3ran4za1FQ==}
 
   ohash@2.0.11:
     resolution: {integrity: sha512-RdR9FQrFwNBNXAr4GixM8YaRZRJ5PUWbKYbE5eOsrwAjJW0q2REGcf79oYPsLyskQCZG1PLN+S/K1V00joZAoQ==}
@@ -4831,6 +4840,12 @@ snapshots:
       tinyexec: 1.0.1
 
   object-deep-merge@2.0.0: {}
+
+  ofetch@1.5.0:
+    dependencies:
+      destr: 2.0.5
+      node-fetch-native: 1.6.7
+      ufo: 1.6.1
 
   ohash@2.0.11: {}
 

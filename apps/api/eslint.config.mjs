@@ -6,4 +6,9 @@ export default antfu(
 		typescript: true,
 	},
 	baseConfig,
+	{
+		rules: {
+			"ts/no-namespace": "off",
+		},
+	},
 );
