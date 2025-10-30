@@ -16,9 +16,13 @@ declare global {
 }
 
 export namespace API {
-	export interface GET extends Blog.GET {}
-	export interface POST extends Blog.POST {}
-	export interface PUT extends Blog.PUT {}
-	export interface PATCH extends Blog.PATCH {}
-	export interface DELETE extends Blog.DELETE {}
+	export type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+
+	export interface All {
+		GET: Blog.GET;
+		POST: Blog.POST;
+		PUT: Blog.PUT;
+		PATCH: Blog.PATCH;
+		DELETE: Blog.DELETE;
+	}
 }
