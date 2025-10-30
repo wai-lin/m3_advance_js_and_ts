@@ -21,7 +21,7 @@ const dtos = {
 		json: z.object({
 			title: z.string().min(1).max(500),
 			slug: z.string().min(1).max(500).optional(),
-			content: z.string().optional(),
+			content: z.json().optional(),
 		}),
 	},
 	update: {
@@ -31,7 +31,7 @@ const dtos = {
 		json: z.object({
 			title: z.string().min(1).max(500).optional(),
 			slug: z.string().min(1).max(500).optional(),
-			content: z.string().optional(),
+			content: z.json().optional(),
 		}),
 	},
 	destroy: {

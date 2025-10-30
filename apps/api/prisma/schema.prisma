@@ -17,7 +17,7 @@ model Blog {
    id        String   @id @default(cuid())
    slug      String?  @unique @default(cuid())
    title     String
-   content   String?
+   content   Json?
    createdAt DateTime @default(now())
    updatedAt DateTime @default(now()) @updatedAt
 }
