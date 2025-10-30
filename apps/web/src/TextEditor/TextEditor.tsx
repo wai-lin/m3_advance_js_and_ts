@@ -30,7 +30,7 @@ export const TextEditor: Component = () => {
 	return (
 		<div
 			style={{ "--editor-width": "800px" }}
-			class="relative px-4 py-10"
+			class="relative"
 		>
 			<EditorContent ref={editorEl} defaultEditor={editor}>
 				<Show when={editor()}>
