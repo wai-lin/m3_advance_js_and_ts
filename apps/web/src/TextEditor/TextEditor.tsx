@@ -24,7 +24,6 @@ export const TextEditor: Component = () => {
 
 		setEditor(editorInstance);
 	});
-
 	onCleanup(() => editor()?.destroy());
 
 	return (
