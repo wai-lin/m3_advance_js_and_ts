@@ -1,40 +1,43 @@
 {
-	"name": "@editor/web",
-	"type": "module",
-	"version": "0.0.0",
-	"private": true,
-	"imports": {
-		"#utils/*": "./src/utils/*.ts"
-	},
-	"scripts": {
-		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"preview": "vite preview",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix"
-	},
-	"dependencies": {
-		"@solidjs/router": "^0.15.3",
-		"@tailwindcss/vite": "^4.1.16",
-		"@tiptap/core": "^3.9.0",
-		"@tiptap/starter-kit": "^3.9.0",
-		"clsx": "^2.1.1",
-		"daisyui": "^5.3.10",
-		"solid-js": "^1.9.9",
-		"tailwind-merge": "^3.3.1",
-		"tailwindcss": "^4.1.16"
-	},
-	"devDependencies": {
-		"@antfu/eslint-config": "^6.1.0",
-		"@editor/eslint-config": "workspace:*",
-		"@iconify-json/lucide": "^1.2.71",
-		"@iconify/tailwind4": "^1.0.6",
-		"@types/node": "^24.6.0",
-		"eslint": "^9.38.0",
-		"eslint-plugin-better-tailwindcss": "^3.7.10",
-		"eslint-plugin-solid": "^0.14.5",
-		"typescript": "~5.9.3",
-		"vite": "^7.1.7",
-		"vite-plugin-solid": "^2.11.8"
-	}
+   "name": "@editor/web",
+   "type": "module",
+   "version": "0.0.0",
+   "private": true,
+   "imports": {
+      "#utils/*": "./src/utils/*.ts"
+   },
+   "scripts": {
+      "dev": "vite",
+      "build": "tsc -b && vite build",
+      "preview": "vite preview",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix"
+   },
+   "dependencies": {
+      "@editor/api": "workspace:*",
+      "@solidjs/router": "^0.15.3",
+      "@tailwindcss/vite": "^4.1.16",
+      "@tiptap/core": "^3.9.0",
+      "@tiptap/starter-kit": "^3.9.0",
+      "clsx": "^2.1.1",
+      "daisyui": "^5.3.10",
+      "dayjs": "^1.11.18",
+      "ofetch": "^1.5.0",
+      "solid-js": "^1.9.9",
+      "tailwind-merge": "^3.3.1",
+      "tailwindcss": "^4.1.16"
+   },
+   "devDependencies": {
+      "@antfu/eslint-config": "^6.1.0",
+      "@editor/eslint-config": "workspace:*",
+      "@iconify-json/lucide": "^1.2.71",
+      "@iconify/tailwind4": "^1.0.6",
+      "@types/node": "^24.6.0",
+      "eslint": "^9.38.0",
+      "eslint-plugin-better-tailwindcss": "^3.7.10",
+      "eslint-plugin-solid": "^0.14.5",
+      "typescript": "~5.9.3",
+      "vite": "^7.1.7",
+      "vite-plugin-solid": "^2.11.8"
+   }
 }
