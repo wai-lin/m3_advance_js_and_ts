@@ -25,4 +25,9 @@ export namespace API {
 		PATCH: Blog.PATCH;
 		DELETE: Blog.DELETE;
 	}
+
+	export type ExtractType<
+		M extends Method,
+		P extends keyof All[M],
+	> = All[M][P];
 }

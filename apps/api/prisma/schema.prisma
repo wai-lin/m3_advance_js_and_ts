@@ -15,7 +15,7 @@ datasource db {
 
 model Blog {
    id        String   @id @default(cuid())
-   slug      String?  @unique @default(cuid())
+   slug      String   @unique @default(cuid())
    title     String
    content   Json?
    createdAt DateTime @default(now())
