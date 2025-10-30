@@ -24,12 +24,7 @@ const services = {
 	store: async (args: InferEachZod<typeof dtos.store>) => {
 		const { json } = args;
 
-		const blog = await db.blog.create({
-			data: {
-				...json,
-				content: json.content as never,
-			},
-		});
+		const blog = await db.blog.create({ data: json });
 		return blog;
 	},
 	update: async (args: InferEachZod<typeof dtos.update>) => {
@@ -37,11 +32,7 @@ const services = {
 
 		const blog = await db.blog.update({
 			where: { id: param.blog },
-			data: {
-				...json,
-				content: json.content as never,
-				updatedAt: new Date(),
-			},
+			data: { ...json, updatedAt: new Date() },
 		});
 		return blog;
 	},
