@@ -6,5 +6,8 @@ export default antfu({
       semi: true,
       indent: "tab",
       quotes: "double",
-   }
-})
+   },
+   rules: {
+      "antfu/if-newline": "off",
+   },
+});
