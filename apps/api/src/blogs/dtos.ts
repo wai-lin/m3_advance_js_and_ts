@@ -22,6 +22,7 @@ const dtos = {
 			title: z.string().min(1).max(500),
 			slug: z.string().min(1).max(500).optional(),
 			content: z.json().optional().transform(v => v as any),
+			contentHtml: z.string().optional(),
 		}),
 	},
 	update: {
@@ -32,6 +33,7 @@ const dtos = {
 			title: z.string().min(1).max(500).optional(),
 			slug: z.string().min(1).max(500).optional(),
 			content: z.json().optional().transform(v => v as any),
+			contentHtml: z.string().optional(),
 		}),
 	},
 	destroy: {
