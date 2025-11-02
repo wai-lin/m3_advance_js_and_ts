@@ -1,24 +1,28 @@
 import type { Component } from "solid-js";
 import type { Query } from "./composables";
-import { createResource, createSignal, For } from "solid-js";
-import { Container, Heading, ShowResource } from "../Components";
+import { useQuery } from "@tanstack/solid-query";
+import { createSignal, For } from "solid-js";
+import { Container, Heading, Main, ShowResource } from "../Components";
 import { BlogCard } from "./BlogCard";
 import { fetchBlogList } from "./composables";
 
 export const BlogList: Component = () => {
 	const [query] = createSignal<Query>({});
-	const [blogs] = createResource(query, fetchBlogList);
+	const blogsList = useQuery(() => ({
+		queryKey: ["blogs", query()],
+		queryFn: () => fetchBlogList(query()),
+	}));
 
 	return (
-		<main class="min-h-screen bg-base-200">
+		<Main>
 			<Container as="section" class="relative pt-30">
-				<Heading class="fixed top-0 bg-base-200 pt-10 pb-5">
-					Blogs
-				</Heading>
+				<div class="fixed top-0 z-10 w-full bg-base-200 px-4 pt-10 pb-5">
+					<Heading>Blogs</Heading>
+				</div>
 
-				<div class="space-y-6">
-					<ShowResource resource={blogs}>
-						<For each={blogs()?.data}>
+				<div class="space-y-6 px-4 pb-40">
+					<ShowResource resource={blogsList}>
+						<For each={blogsList.data?.data}>
 							{blog => (
 								<BlogCard
 									slug={blog.slug}
@@ -30,6 +34,6 @@ export const BlogList: Component = () => {
 					</ShowResource>
 				</div>
 			</Container>
-		</main>
+		</Main>
 	);
 };
