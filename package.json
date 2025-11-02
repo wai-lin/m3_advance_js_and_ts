@@ -7,6 +7,8 @@
    "scripts": {
       "dev:web": "pnpm --filter @editor/web dev",
       "dev:api": "pnpm --filter @editor/api dev",
+      "lint": "pnpm --recursive run lint",
+      "lint:fix": "pnpm --recursive run lint:fix",
       "db:push": "pnpm --filter @editor/api db:push"
    }
 }
