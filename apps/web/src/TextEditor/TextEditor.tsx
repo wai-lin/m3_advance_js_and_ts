@@ -2,12 +2,13 @@ import type { Component } from "solid-js";
 import { debounce } from "@solid-primitives/scheduled";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
-import { createSignal, onCleanup, onMount, Show } from "solid-js";
+import { createEffect, createSignal, onCleanup, onMount, Show } from "solid-js";
 import { EditorContent } from "./EditorContent";
 import { EditorMenu } from "./EditorMenu";
 
 interface Props {
 	name?: string;
+	defaultValue?: string;
 }
 export const TextEditor: Component<Props> = (props) => {
 	let editorEl!: HTMLDivElement;
@@ -24,6 +25,7 @@ export const TextEditor: Component<Props> = (props) => {
 	onMount(() => {
 		const editorInstance = new Editor({
 			element: editorEl,
+			content: props.defaultValue,
 			editorProps: {
 				attributes: { class: "outline-none" },
 			},
@@ -39,6 +41,20 @@ export const TextEditor: Component<Props> = (props) => {
 
 		setEditor(editorInstance);
 	});
+
+	createEffect(() => {
+		const ed = editor();
+		const defaultContent = props.defaultValue;
+		if (ed && defaultContent !== undefined) {
+			const currentContent = ed.getHTML();
+			if (currentContent !== defaultContent) {
+				ed.commands.setContent(defaultContent);
+				setHtml(defaultContent);
+				setJson(JSON.stringify(ed.getJSON()));
+			}
+		}
+	});
+
 	onCleanup(() => {
 		editor()?.destroy();
 	});
