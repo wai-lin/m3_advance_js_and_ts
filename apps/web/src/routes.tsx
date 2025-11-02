@@ -9,6 +9,7 @@ export const Routes: Component = () => {
 			<Route path="/" component={BlogList} />
 			<Route path="/create" component={lazy(() => import("./BlogCreateForm"))} />
 			<Route path="/:blog" component={lazy(() => import("./BlogPreview"))} />
+			<Route path="/:blog/edit" component={lazy(() => import("./BlogEditForm"))} />
 		</Router>
 	);
 };
