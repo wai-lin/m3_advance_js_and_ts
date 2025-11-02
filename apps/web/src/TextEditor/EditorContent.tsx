@@ -15,16 +15,18 @@ export const EditorContent: Component<Props> = (props) => {
 				"rounded-md border border-neutral/20 bg-white",
 			)}
 		>
-			{props.children}
 			<div
 				ref={props.ref}
+				tabIndex={0}
 				class={cn(
 					"min-h-20 cursor-text",
 					// eslint-disable-next-line better-tailwindcss/no-unregistered-classes
 					"editor-content",
 				)}
 				onClick={() => props.defaultEditor()?.chain().focus().run()}
+				onFocus={() => props.defaultEditor()?.chain().focus().run()}
 			/>
+			{props.children}
 		</div>
 	);
 };
