@@ -12,7 +12,7 @@ export const EditorContent: Component<Props> = (props) => {
 			class={cn(
 				"relative mx-auto w-full max-w-(--editor-width) overflow-hidden",
 				"px-4 pt-4 pb-16",
-				"rounded border border-stone-200 bg-white",
+				"rounded-md border border-neutral/20 bg-white",
 			)}
 		>
 			{props.children}

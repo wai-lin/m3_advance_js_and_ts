@@ -44,7 +44,7 @@ export const EditorMenu: Component<Props> = (props) => {
 					"mx-auto w-full max-w-(--editor-width)",
 					"overflow-x-auto px-4 py-2",
 					"flex items-center gap-4",
-					"border-t border-stone-200 bg-white",
+					"border-t border-neutral/20 bg-white",
 				)}
 			>
 				<div class="join">
