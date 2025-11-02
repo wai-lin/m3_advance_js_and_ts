@@ -9,7 +9,7 @@ import { BlogCard } from "./BlogCard";
 import { fetchBlogList } from "./composables";
 
 export const BlogList: Component = () => {
-	const [query] = createSignal<Query>({});
+	const [query, setQuery] = createSignal<Query>({ limit: 3, offset: 0 });
 	const blogsList = useQuery(() => ({
 		queryKey: ["blogs", query()],
 		queryFn: () => fetchBlogList(query()),
@@ -45,6 +45,54 @@ export const BlogList: Component = () => {
 							)}
 						</For>
 					</ShowResource>
+
+					<div class="flex justify-center">
+						<div class="join">
+							<button
+								title="Previous Page"
+								disabled={!blogsList.data?.meta.hasPrevPage}
+								class={cn(
+									"btn join-item btn-square",
+									{ "btn-disabled": !blogsList.data?.meta.hasPrevPage },
+								)}
+								onClick={() => {
+									const data = blogsList.data;
+									if (!data?.meta.hasPrevPage) return;
+
+									const offset = data.meta.offset;
+									const limit = data.meta.limit;
+									setQuery(q => ({
+										...q,
+										offset: offset - limit,
+									}));
+								}}
+							>
+								<i class="iconify lucide--chevron-left" />
+							</button>
+
+							<button
+								title="Next Page"
+								disabled={!blogsList.data?.meta.hasNextPage}
+								class={cn(
+									"btn join-item btn-square",
+									{ "btn-disabled": !blogsList.data?.meta.hasNextPage },
+								)}
+								onClick={() => {
+									const data = blogsList.data;
+									if (!data?.meta.hasNextPage) return;
+
+									const offset = data.meta.offset;
+									const limit = data.meta.limit;
+									setQuery(q => ({
+										...q,
+										offset: offset + limit,
+									}));
+								}}
+							>
+								<i class="iconify lucide--chevron-right" />
+							</button>
+						</div>
+					</div>
 				</div>
 			</Container>
 		</Main>
