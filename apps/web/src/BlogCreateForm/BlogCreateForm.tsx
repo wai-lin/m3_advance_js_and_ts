@@ -1,11 +1,11 @@
 import type { Component } from "solid-js";
 import { cn } from "#utils/cn";
 import { getFormEntries } from "#utils/form";
-import { A, useNavigate } from "@solidjs/router";
+import { useNavigate } from "@solidjs/router";
 import { useMutation } from "@tanstack/solid-query";
 import { Match, Switch } from "solid-js";
 import { BlogEditorForm, formSchema } from "../BlogEditorForm";
-import { Container, Heading, Main } from "../Components";
+import { Container, GoToHomeButton, Heading, Main } from "../Components";
 import { fetchCreateBlog } from "./composables";
 
 export const BlogCreateForm: Component = () => {
@@ -26,9 +26,7 @@ export const BlogCreateForm: Component = () => {
 			<Container>
 				<header class="flex items-center justify-between gap-10 py-5">
 					<div class="flex items-center gap-6">
-						<A href="/" class="btn btn-square" title="Go to Home">
-							<i class="iconify lucide--home" />
-						</A>
+						<GoToHomeButton />
 
 						<Heading>Create Blog</Heading>
 					</div>
