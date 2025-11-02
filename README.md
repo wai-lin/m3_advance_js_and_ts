@@ -21,7 +21,8 @@ This project is organized into the following directories:
 ## Setup
 
 1. `pnpm install` : Install all dependencies. (This will also generate necessary ORM types)
-2. `pnpm db:push` : Push the database schema to the database.
+2. `cp apps/api/.env.example apps/api/.env` : Copy the example environment file.
+3. `pnpm db:push` : Push the database schema to the database.
 
 ## Development
 
