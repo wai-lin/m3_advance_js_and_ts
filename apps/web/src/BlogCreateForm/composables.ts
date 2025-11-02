@@ -1,5 +1,5 @@
-import { api } from "#utils/api";
 import type { API } from "@editor/api/types";
+import { api } from "#utils/api";
 
 export type Data = API.ExtractType<"POST", "/blogs">["json"];
 
