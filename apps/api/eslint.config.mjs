@@ -3,6 +3,7 @@ import baseConfig from "@editor/eslint-config";
 
 export default antfu(
 	{
+		ignores: ["prisma"],
 		typescript: true,
 	},
 	baseConfig,
