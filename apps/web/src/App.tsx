@@ -1,8 +1,11 @@
+import { SetupQueryClient } from "./lib/QueryClient";
 import { Routes } from "./routes";
 
 function App() {
 	return (
-		<Routes />
+		<SetupQueryClient>
+			<Routes />
+		</SetupQueryClient>
 	);
 }
 
