@@ -1,5 +1,5 @@
-import { cn } from "#utils/cn";
 import type { Component, JSX } from "solid-js";
+import { cn } from "#utils/cn";
 import { createMemo, mergeProps, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
