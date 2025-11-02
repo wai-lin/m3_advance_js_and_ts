@@ -8,6 +8,7 @@ export default antfu({
       quotes: "double",
    },
    rules: {
+      "style/brace-style": "off",
       "antfu/if-newline": "off",
    },
 });
