@@ -1,7 +1,12 @@
 {
-  "name": "editor",
-  "description": "",
-  "author": "wai-lin",
-  "license": "MIT",
-  "packageManager": "pnpm@10.19.0"
+   "name": "editor",
+   "description": "",
+   "author": "wai-lin",
+   "license": "MIT",
+   "packageManager": "pnpm@10.19.0",
+   "scripts": {
+      "dev:web": "pnpm --filter @editor/web dev",
+      "dev:api": "pnpm --filter @editor/api dev",
+      "db:push": "pnpm --filter @editor/api db:push"
+   }
 }
