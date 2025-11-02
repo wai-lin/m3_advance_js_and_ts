@@ -7,6 +7,12 @@
 }
 
 @layer base {
+   html, body {
+      overscroll-behavior: none;
+   }
+}
+
+@layer base {
    .editor-content {
       h1, h2, h3 {
          @apply font-bold;
