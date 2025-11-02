@@ -6,3 +6,9 @@ export async function fetchBlogBySlug(slug: string) {
 		query: { type: "slug" },
 	});
 }
+
+export async function fetchDestoryBlog(blog: string) {
+	return await api.delete("/blogs/:blog", {
+		param: { blog },
+	});
+}
