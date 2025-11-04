@@ -1,3 +1,4 @@
-export function fn() {
-	return "Hello, tsdown!";
-}
+import { runMain } from "citty";
+import { mainCmd } from "./command";
+
+runMain(mainCmd);
