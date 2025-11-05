@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { getPATHs } from "./path";
 
 function parseRCFile(configPath: string) {
+	if (!fs.existsSync(configPath)) return [];
 	const file = fs.readFileSync(configPath).toString();
 	if (file.length === 0) return [];
 	const paths = file
@@ -21,7 +22,7 @@ export function createRCManager(configPath: string) {
 	}
 
 	function set(path: string) {
-		const allPaths = getPATHs();
+		const allPaths = getPATHs().concat(paths).sort();
 		const exists = allPaths.findIndex(p => p === path) !== -1;
 		if (exists) return "found";
 		paths.push(path);
