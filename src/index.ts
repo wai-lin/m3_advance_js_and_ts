@@ -1,4 +1,4 @@
 import { runMain } from "citty";
-import { mainCmd } from "./command";
+import { mainCmd } from "./core";
 
 runMain(mainCmd);

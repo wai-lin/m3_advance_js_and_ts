@@ -20,7 +20,7 @@
     "dist"
   ],
   "imports": {
-    "#utils/*": "./src/utils/*.ts"
+    "#lib/*": "./src/lib/*.ts"
   },
   "scripts": {
     "build": "tsdown",
