@@ -1,7 +1,7 @@
 {
   "name": "shath",
   "version": "0.0.0",
-  "description": "A starter for creating a TypeScript package.",
+  "description": "PATH manager CLI tool for zsh.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/author/library#readme",
