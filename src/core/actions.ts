@@ -7,9 +7,6 @@ import { createRCManager } from "#lib/rcfile";
 
 const HOME = os.homedir();
 const CONFIG = ".shathrc";
-const CONFIG_PATH = path.resolve(HOME, CONFIG);
-
-const manager = createRCManager(CONFIG_PATH);
 
 function outputPaths(paths: string[]) {
 	const log = createOutputChain();
@@ -24,82 +21,97 @@ function outputPaths(paths: string[]) {
 	log.output(paths => paths.join(""));
 }
 
-/**
- * Create `.shathrc` file if it does not exist.
- */
-export async function setup() {
-	const output = createOutput();
-	if (fs.existsSync(CONFIG_PATH)) {
-		output(c => c.green("Configuration file already exists."));
-	}
-	else {
-		output(c => c.bgYellow.white("Configuration file does not exist."));
-		output(c => c.gray("Creating configuration file..."));
-		fs.writeFileSync(CONFIG_PATH, "");
-		output(c => c.green(`Configuration file created successfully: ${CONFIG_PATH}`));
-	}
-	output("==================================================");
-	output(c => c.bgGreen.white("Do this after setup."));
-	output(c => c.gray(`Append "source ${CONFIG_PATH}" to ".zshrc" file.`));
-	output(c => c.green(`echo "source ${CONFIG_PATH}" >> ~/.zshrc`));
-}
+export function createActions(folderPath: string = HOME) {
+	folderPath = folderPath.length <= 0 ? HOME : folderPath;
+	const configPath = path.resolve(folderPath, CONFIG);
+	let manager = createRCManager(configPath);
 
-/**
- * List all PATHs from `.shathrc` and from system.
- */
-export function listAll() {
-	const log = createOutput();
-	log(c => c.bgYellowBright.white("All paths exported to system."));
-	outputPaths(getPATHs());
-}
-
-/**
- * List all PATHs defined in `.shathrc` file.
- */
-export function list() {
-	const log = createOutput();
-	log(c => c.bgYellowBright.white("Paths defined in `~/.shathrc` file."));
-	outputPaths(manager.list());
-}
-
-/**
- * Set a PATH to `.shathrc` file.
- * @param path - The path to be set.
- */
-export function set(path: string) {
-	const log = createOutput();
-	const set = manager.set(path);
-	if (set === "found") {
-		log(c => c.green(`Path "${path}" already exists.`));
-	}
-	else if (set === "set") {
-		manager.commit();
-		log(c => c.green(`Path "${path}" added successfully.`));
-	}
-}
-
-/**
- * Remove a PATH from `.shathrc` file.
- * @param path - (string | number) The path to be removed.
- */
-export function remove(path: string) {
-	const log = createOutput();
-
-	const isNumber = /^\d+$/.test(path);
-	let status: "not found" | "removed" = "not found";
-
-	if (isNumber) {
-		status = manager.removeIdx(Number(path));
-	}
-	else {
-		status = manager.remove(path);
+	function reloadManager() {
+		manager = createRCManager(configPath);
 	}
 
-	if (status === "not found") {
-		log(c => c.red(`Path "${path}" not found.`));
+	/**
+	 * Create `.shathrc` file if it does not exist.
+	 */
+	async function setup() {
+		const output = createOutput();
+		if (fs.existsSync(configPath)) {
+			output(c => c.green("Configuration file already exists."));
+		}
+		else {
+			output(c => c.bgYellow.white("Configuration file does not exist."));
+			output(c => c.gray("Creating configuration file..."));
+			fs.writeFileSync(configPath, "");
+			output(c => c.green(`Configuration file created successfully: ${configPath}`));
+		}
+		output("==================================================");
+		output(c => c.bgGreen.white("Do this after setup."));
+		output(c => c.gray(`Append "source ${configPath}" to ".zshrc" file.`));
+		output(c => c.green(`echo "source ${configPath}" >> ~/.zshrc`));
 	}
-	else if (status === "removed") {
-		manager.commit();
-		log(c => c.green(`Path "${path}" removed successfully.`));
+
+	/**
+	 * List all PATHs from `.shathrc` and from system.
+	 */
+	function listAll() {
+		const log = createOutput();
+		log(c => c.bgYellowBright.white("All paths exported to system."));
+		outputPaths(getPATHs());
 	}
+
+	/**
+	 * List all PATHs defined in `.shathrc` file.
+	 */
+	function list() {
+		reloadManager();
+		const log = createOutput();
+		log(c => c.bgYellowBright.white("Paths defined in `~/.shathrc` file."));
+		outputPaths(manager.list());
+	}
+
+	/**
+	 * Set a PATH to `.shathrc` file.
+	 * @param path - The path to be set.
+	 */
+	function set(path: string) {
+		reloadManager();
+		const log = createOutput();
+		const set = manager.set(path);
+		if (set === "found") {
+			log(c => c.green(`Path "${path}" already exists.`));
+		}
+		else if (set === "set") {
+			manager.commit();
+			log(c => c.green(`Path "${path}" added successfully.`));
+		}
+	}
+
+	/**
+	 * Remove a PATH from `.shathrc` file.
+	 * @param path - (string | number) The path to be removed.
+	 */
+	function remove(path: string) {
+		reloadManager();
+		const log = createOutput();
+
+		const isNumber = /^\d+$/.test(path);
+		let status: "not found" | "removed" = "not found";
+
+		if (isNumber) {
+			status = manager.removeIdx(Number(path));
+		}
+		else {
+			status = manager.remove(path);
+		}
+
+		if (status === "not found") {
+			log(c => c.red(`Path "${path}" not found.`));
+		}
+		else if (status === "removed") {
+			manager.commit();
+			log(c => c.green(`Path "${path}" removed successfully.`));
+		}
+	}
+
+	return { setup, listAll, list, set, remove };
 }

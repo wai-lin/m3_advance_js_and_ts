@@ -1,5 +1,5 @@
 import { defineCommand } from "citty";
-import { list, listAll, remove, set, setup } from "./actions";
+import { createActions } from "./actions";
 
 export const mainCmd = defineCommand({
 	meta: {
@@ -10,7 +10,12 @@ export const mainCmd = defineCommand({
 	args: {
 		setup: {
 			type: "boolean",
-			description: "Setup the configuration file.",
+			description: `Setup the configuration ".shathrc" file.`,
+		},
+		config: {
+			type: "string",
+			description: "Provide path to config file.",
+			valueHint: "/path/to/new/directory (default: $HOME/.shathrc)",
 		},
 		listAll: {
 			type: "boolean",
@@ -36,6 +41,7 @@ export const mainCmd = defineCommand({
 		},
 	},
 	run({ args }) {
+		const { setup, listAll, list, set, remove } = createActions(args.config);
 		if (args.setup) setup();
 		else if (args.listAll) listAll();
 		else if (args.list) list();
